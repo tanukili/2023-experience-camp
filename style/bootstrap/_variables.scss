@@ -76,7 +76,7 @@ $colors: (
   "cyan":       $cyan,
   "white":      $white,
   "gray":       $gray-600,
-  "gray-dark":  $gray-800
+  "gray-dark":  $gray-800,
 ) !default;
 // scss-docs-end colors-map
 
@@ -103,7 +103,11 @@ $theme-colors: (
   "light":      $light,
   "white":      $white,
   "dark":       $dark,
-  "surface":    $surface
+  "surface":    $surface,
+  "black-20":      $black-20,
+  "black-60":     $black-60,
+  "black-80":     $black-80,
+  "black-100":      $black-100,
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -215,6 +219,8 @@ $cyan-600: shade-color($cyan, 20%) !default;
 $cyan-700: shade-color($cyan, 40%) !default;
 $cyan-800: shade-color($cyan, 60%) !default;
 $cyan-900: shade-color($cyan, 80%) !default;
+
+
 // fusv-enable
 
 // Characters which are escaped by the escape-svg function
@@ -269,7 +275,7 @@ $spacers: (
   0: 0,
   1: $spacer / 4,
   2: $spacer / 2,
-  3: $spacer * 1.33, // 12
+  3: $spacer * 0.75, // 12
   4: $spacer * 1.25, // 20
   5: $spacer * 1.5, //24
   6: $spacer * 2, //32
@@ -297,7 +303,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   #1E1E1E !default;
+$body-bg:                   $black !default;
 $body-color:                $white !default;
 $body-text-align:           null !default;
 
@@ -396,6 +402,7 @@ $border-radius:               1rem !default;
 $border-radius-sm:            .2rem !default;
 $border-radius-lg:            .3rem !default;
 $border-radius-pill:          50rem !default;
+$border-radius-bg:            10rem !default;
 // scss-docs-end border-radius-variables
 
 // scss-docs-start box-shadow-variables
@@ -488,6 +495,7 @@ $font-sizes: (
   9: $d3-font-size,
   10: $sm-font-size,
   11: $tiny-font-size,
+  12: $font-size-base,
 ) !default;
 // scss-docs-end font-sizes
 
@@ -625,9 +633,9 @@ $input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-colo
 $input-btn-focus-blur:          0 !default;
 $input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color !default;
 
-$input-btn-padding-y-sm:      .25rem !default;
-$input-btn-padding-x-sm:      .5rem !default;
-$input-btn-font-size-sm:      $font-size-sm !default;
+$input-btn-padding-y-sm:      .5rem !default;
+$input-btn-padding-x-sm:      1rem !default;
+$input-btn-font-size-sm:      $font-size-base !default;
 
 $input-btn-padding-y-lg:      .5rem !default;
 $input-btn-padding-x-lg:      1rem !default;
@@ -672,7 +680,7 @@ $btn-link-disabled-color:     $gray-600 !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           $border-radius !default;
-$btn-border-radius-sm:        $border-radius-sm !default;
+$btn-border-radius-sm:        $border-radius !default;
 $btn-border-radius-lg:        $border-radius-lg !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
@@ -819,13 +827,13 @@ $input-group-addon-border-color:        $input-border-color !default;
 // scss-docs-end input-group-variables
 
 // scss-docs-start form-select-variables
-$form-select-padding-y:             $input-padding-y !default;
-$form-select-padding-x:             $input-padding-x !default;
+$form-select-padding-y:             $spacer * 1.25 !default;
+$form-select-padding-x:             $spacer * 2.5 !default;
 $form-select-font-family:           $input-font-family !default;
-$form-select-font-size:             $input-font-size !default;
-$form-select-indicator-padding:     $form-select-padding-x * 3 !default; // Extra padding for background-image
+$form-select-font-size:             $font-size-base !default;
+$form-select-indicator-padding:     $form-select-padding-x * 1.5 !default; // Extra padding for background-image
 $form-select-font-weight:           $input-font-weight !default;
-$form-select-line-height:           $input-line-height !default;
+$form-select-line-height:           $line-height-base !default;
 $form-select-color:                 $input-color !default;
 $form-select-bg:                    $input-bg !default;
 $form-select-disabled-color:        null !default;
@@ -841,7 +849,7 @@ $form-select-feedback-icon-position:    center right $form-select-indicator-padd
 $form-select-feedback-icon-size:        $input-height-inner-half $input-height-inner-half !default;
 
 $form-select-border-width:        $input-border-width !default;
-$form-select-border-color:        $input-border-color !default;
+$form-select-border-color:        $black-20 !default;
 $form-select-border-radius:       $border-radius !default;
 $form-select-box-shadow:          $box-shadow-inset !default;
 
@@ -1108,18 +1116,18 @@ $pagination-border-radius-lg:       $border-radius-lg !default;
 // Cards
 
 // scss-docs-start card-variables
-$card-spacer-y:                     $spacer !default;
-$card-spacer-x:                     $spacer !default;
+$card-spacer-y:                     $spacer * 1.25 !default;
+$card-spacer-x:                     $spacer * 2 !default;
 $card-title-spacer-y:               $spacer / 2 !default;
 $card-border-width:                 $border-width !default;
 $card-border-radius:                $border-radius !default;
-$card-border-color:                 rgba($black, .125) !default;
+$card-border-color:                 $black-20 !default;
 $card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
-$card-cap-padding-y:                $card-spacer-y / 2 !default;
+$card-cap-padding-y:                $card-spacer-y !default;
 $card-cap-padding-x:                $card-spacer-x !default;
-$card-cap-bg:                       rgba($black, .03) !default;
+$card-cap-bg:                       null !default;
 $card-cap-color:                    null !default;
-$card-height:                       null !default;
+$card-height:                       100% !default;
 $card-color:                        null !default;
 $card-bg:                           $white !default;
 $card-img-overlay-padding:          $spacer !default;
