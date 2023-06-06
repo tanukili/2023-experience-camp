@@ -1,14 +1,12 @@
 body {
   font-family: "Noto Sans TC", sans-serif, serif;
-  line-height: 1.5;
+  line-height: $line-height-base;
 }
-
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
-
 h1 {
   background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/logo.png?raw=true);
   background-size: cover;
@@ -33,9 +31,9 @@ h1 {
 // 按鈕設定
 .btn-style-class {
   .btn-outline-black-60 {
-    line-height: 1.5;
+    line-height: $line-height-base;
     border: none;
-    &:hover, &:focus, &active {
+    &:hover, &:focus, &:active, &.active {
       background: $black-20;
       color: $black-100;
       font-weight: $font-weight-bold;
@@ -43,7 +41,7 @@ h1 {
     }
   }
 }
-
+// 其他樣式
 .pricing-card {
   background: $body-bg;
   border-color: $black-80;
@@ -78,28 +76,88 @@ h1 {
     }
   }
 }
-
 .logobar {
   position: relative;
   img {
     max-width: $spacer * 10;
     margin: 0 $spacer * 0.625;
-  }
+  };
   .gradient {
     width: $spacer * 12.25;
     height: 100%;
     background:linear-gradient( to right, $black, transparent 100%);
     position: absolute;
-  }
+  };
   .left {
     left: 0;
-  }
+  };
   .right {
     background:linear-gradient( to left, $black, transparent 100%);
     right: 0;
   }
 }
-
-select {
-  max-width: 50px;
+.searchbar {
+  .material-icons {
+    left: 43px;
+  };
+  .form-control {
+    padding-left: 76px;
+  }
+}
+.dropdown {
+  .dropdown-toggle {
+    &:after {
+      display: none;
+    };
+    .material-icons {
+      display: inline-block;
+    }
+  };
+  .btn-outline-light {
+    &:hover ,&:focus , &.dropdown-toggle.show{
+      background: $white;
+      color: $black-100;
+      border-color: $black-100;
+      box-shadow: none;
+    } 
+  };
+  .dropdown-menu {
+    border: none;
+    box-shadow: 0px $spacer * 0.25 $spacer *1.25 rgba(0, 0, 0, 0.15);
+    &.filter {
+      width: $spacer * 15;
+      .dropdown-item, .dropdown-header {
+        padding-left: $spacer * 2.5;
+      };
+    };
+    .dropdown-item {
+      &.active, &:active {
+        color: $black-100;
+        background: $white;
+        position: relative;
+        &::after {
+          content: "done";
+          font-family: "Material Icons";
+          position: absolute;
+          right: $spacer;
+        }
+      }
+    }
+  }
+}
+.card-img {
+  overflow: hidden;
+  border-radius: 0;
+  img {
+    transition: all 0.5s;
+    &:hover {
+      transform: scale(1.2, 1.2);
+      transition: all 0.5s;
+    }
+  }
+}
+.page-link {
+  &:focus, &active {
+    box-shadow: none;
+  }
 }
