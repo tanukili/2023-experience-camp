@@ -2,11 +2,13 @@ body {
   font-family: "Noto Sans TC", sans-serif, serif;
   line-height: $line-height-base;
 }
+
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
 h1 {
   background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/logo.png?raw=true);
   background-size: cover;
@@ -16,6 +18,71 @@ h1 {
   text-indent: 101%;
   overflow: hidden;
   white-space: nowrap;
+  &.logo-sm {
+    @media (max-width: $md-breakpoint) {
+      width: 147px;
+      height: 24px;
+    }
+  }
+}
+
+.row {
+  @include media-breakpoint-down(md) {
+    .col-none {
+      width: auto;
+      padding: 0;
+    }
+    .col {
+      flex-basis: 25%;
+      max-width: 25%;
+    }
+  }
+}
+
+.fs-1 {
+  @media (max-width: $md-breakpoint) {
+    font-size: $h3-font-size  !important;
+  }
+}
+
+.fs-8 {
+  @media (max-width: $md-breakpoint) {
+    font-size: $h1-font-size  !important;
+  }
+}
+
+.fs-9 {
+  @media (max-width: $md-breakpoint) {
+    font-size: $h3-font-size  !important;
+  }
+  &.footer-font {
+    @media (max-width: $md-breakpoint) {
+      font-size: $h1-font-size  !important;
+    }    
+  }
+  &.material-icons {
+    @media (max-width: $md-breakpoint) {
+      font-size: $d3-font-size  !important;
+    }
+  }
+}
+
+.mb-9 {
+  @media (max-width: $md-breakpoint) {
+    margin-bottom: $spacer * 7.5 !important;
+  }
+}
+
+.mb-9 {
+  @media (max-width: $md-breakpoint) {
+    margin-bottom: $spacer * 7.5 !important;
+  }
+}
+
+.rounded-4 {
+  @media (max-width: $md-breakpoint) {
+    border-radius: $spacer * 1.25 !important;
+  }
 }
 
 // 常用文字設定
@@ -23,141 +90,12 @@ h1 {
   font-weight: $font-weight-bolder; // 900
   line-height: $line-height-sm; // 1.2
 }
+
 .font-style1-h3 {
   font-weight: $font-weight-bolder; // 900
   line-height: $line-height-sm; // 1.2
   font-size: $h3-font-size; // 32
-}
-// 按鈕設定
-.btn-style-class {
-  .btn-outline-black-60 {
-    line-height: $line-height-base;
-    border: none;
-    &:hover, &:focus, &:active, &.active {
-      background: $black-20;
-      color: $black-100;
-      font-weight: $font-weight-bold;
-      box-shadow: none;
-    }
-  }
-}
-// 其他樣式
-.pricing-card {
-  background: $body-bg;
-  border-color: $black-80;
-  .card-body {
-    padding: $spacer * 5 $spacer * 2.5;
-    .card-title {
-      font-size: $h3-font-size;
-      margin: $spacer * 1.25 0;
-    };
-    p {
-      color: $black-20;
-    }
-  }
-}
-.avatar-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  box-shadow: 0px 100px 80px rgba(18, 18, 18, 0.07), 0px 41.7776px 33.4221px rgba(18, 18, 18, 0.0503198), 0px 22.3363px 17.869px rgba(18, 18, 18, 0.0417275), 0px 12.5216px 10.0172px rgba(18, 18, 18, 0.035), 0px 6.6501px 5.32008px rgba(18, 18, 18, 0.0282725), 0px 2.76726px 2.21381px rgba(18, 18, 18, 0.0196802);
-  .card-body {
-    padding: $spacer * 2.5;
-    .stars {
-      i {
-        font-size: $font-size-base;
-        margin-right: $spacer / 4;
-      }
-    };  
-    .stars+p {
-      padding-bottom: $spacer * 3;;
-    };
-    img {
-      margin-right: $spacer;
-    }
-  }
-}
-.logobar {
-  position: relative;
-  img {
-    max-width: $spacer * 10;
-    margin: 0 $spacer * 0.625;
-  };
-  .gradient {
-    width: $spacer * 12.25;
-    height: 100%;
-    background:linear-gradient( to right, $black, transparent 100%);
-    position: absolute;
-  };
-  .left {
-    left: 0;
-  };
-  .right {
-    background:linear-gradient( to left, $black, transparent 100%);
-    right: 0;
-  }
-}
-.searchbar {
-  .material-icons {
-    left: 43px;
-  };
-  .form-control {
-    padding-left: 76px;
-  }
-}
-.dropdown {
-  .dropdown-toggle {
-    &:after {
-      display: none;
-    };
-    .material-icons {
-      display: inline-block;
-    }
-  };
-  .btn-outline-light {
-    &:hover ,&:focus , &.dropdown-toggle.show{
-      background: $white;
-      color: $black-100;
-      border-color: $black-100;
-      box-shadow: none;
-    } 
-  };
-  .dropdown-menu {
-    border: none;
-    box-shadow: 0px $spacer * 0.25 $spacer *1.25 rgba(0, 0, 0, 0.15);
-    &.filter {
-      width: $spacer * 15;
-      .dropdown-item, .dropdown-header {
-        padding-left: $spacer * 2.5;
-      };
-    };
-    .dropdown-item {
-      &.active, &:active {
-        color: $black-100;
-        background: $white;
-        position: relative;
-        &::after {
-          content: "done";
-          font-family: "Material Icons";
-          position: absolute;
-          right: $spacer;
-        }
-      }
-    }
-  }
-}
-.card-img {
-  overflow: hidden;
-  border-radius: 0;
-  img {
-    transition: all 0.5s;
-    &:hover {
-      transform: scale(1.2, 1.2);
-      transition: all 0.5s;
-    }
-  }
-}
-.page-link {
-  &:focus, &active {
-    box-shadow: none;
+  @media (max-width: $md-breakpoint) {
+    font-size: $h6-font-size;
   }
 }
